@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>hhhhhhhh</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div id="app-root">
+        <my_component></my_component>
+        <h2 ref="myTitle">My age is {{ age }}</h2>
+        <input type="text" ref="myInput" />
+        <button @click="checkRef">checkRef</button>
+        <h1>{{ age }}</h1>
+        <h2 style="text-align: center;">Products </h2>
+            <div class="container">
+                <div class="card" v-for="item in products" :key="item.id">
+                    <p class="id">{{ item.id }}</p>
+                    <p class="title">{{ item.title }}</p>
+                    <p class="desc">{{ item.description }}</p>
+                    <p class="brand">{{ item.brand }}</p>
+                    <p class="price">{{ item.price }}</p>
+                    <div class="colors" v-for="color in item.colors" :style="`background: ${color}`"> 
+                    <span>{{ color }}</span>    
+                    </div>
+
+                </div>
+
+
+            </div>
+        <h2 v-for="(person , index) in array" :key="person.id">
+            <span>id {{ person.id }}</span>
+            <span>id {{ person.name }}</span>
+            <span>id {{ person.age }}</span>
+            <span>id {{ person.city }}</span>
+            <hr>
+        </h2>
+
+        <h2 v-for="(name , index) in students" :key="index">{{ name }}</h2>
+
+        <h3> He is name is {{ name }} He is age is {{ age }}</h3>
+        <h3 v-show="age < 30"> He is age is younger 30</h3>
+        <h3 v-show="age == 30"> He is age is equal 30</h3>
+        <h3 v-show="age > 30"> He is age is older 30</h3>
+
+        <h3 v-if="age < 30"> He is age is younger 30</h3>
+        <h3 v-else-if="age == 30"> He is age is equal 30</h3>
+        <h3 v-else="age > 30"> He is age is older 30</h3>
+        <button @click="age++"> increase age </button>
+        <h3 :style="`color: ${myColor}`"> My Style binding</h3>
+        <h3 :style="`font-size: ${myFont}px`"> My Style binding</h3>
+        <input type="number" name="" id="" v-model="myFont" />
+        <h2 :id="myColor" :class="myColor"> My Title </h2>
+        <input type="text" v-model="myColor">
+        <h2>number 1 is :  {{ numberOne }}</h2>
+        <h2>number 1 * 2:  {{ numOneChange }}</h2>
+        <button @click="numberOne++">number 1 changes : </button>
+
+        <h2>number 2 is :  {{ numberTwo }}</h2>
+        <h2>number 1 * 2:  {{ numTwoChange }}</h2>
+
+        <button @click="numberTwo++">number 1 changes : </button>
+
+
+        <form action="" @submit.prevent="sendData">
+            <label for="username">Username</label>
+            <input type="text" v-model="username" name="username" id="username"  />
+            <label for="email">Email</label>
+            <input type="email" v-model="email"  name="email" id="email" />
+            <label for="password">Password</label>
+            <input type="password" v-model="password" name="password" id="password" />
+            <input type="submit" />
+        </form>
+        <button @click="name = 'mohamd'"></button>
+        <label for="textInp">{{ name }}</label>
+        <input type="text"v-model="name" name="textInp" id="textInp"  />
+        <label for="textInp_2">{{ city }}</label>
+        <input type="text" name="textInp_2" id="textInp_2" />
+
+        <input type="text" @keyup="printMyMe" />
+        <input type="text" @keydown.enter="printMyMe" />
+        <input type="text" @keydown.alt.enter="printMyMe" />
+        <button @click="testFunction"> Click Me </button>
+        <a href="https://www.facebook.com/" @click.prevent> Click prevent </a>
+        <a @click.once="testMe"> Click once </a>
+        <h1>
+            My Name is {{ name }}
+        </h1>
+        <h2>
+            My number is {{ number }}
+        </h2>
+
+        <h2>
+            {{ sayHi("AfterNoon" , name ) }}
+        </h2>
+        <a :href="link"> test </a>
+    </div>
+
+    <div id="app-root2" class="students">
+        <my_component></my_component>
+
+        <h2 style="text-align: center;">Students {{ name }}</h2>
+        <h2 v-for="(name , i) in students" :key="i"> {{ name }}</h2>
+        <button @click="incressAge">incressAge</button>
+</div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
