@@ -1,22 +1,37 @@
 <template>
   <div class="my-main">
     <h2>This is Main Page</h2>
-    <MyContent :students="students" :isActive="isActive" />
+    <MyContent
+      :students="students"
+      @updateAcitve="changeActive($event)"
+      :isActive="isActive"
+    />
     <hr />
-    <MyContent :students="students" :isActive="isActive" />
+    <MyContent
+      :students="students"
+      @updateAcitve="changeActive($event)"
+      :isActive="isActive"
+    />
   </div>
+  <LifeCycle />
 </template>
 
 <script>
 import MyContent from "@/components/MyContent.vue";
+import LifeCycle from "@/components/LifeCycle.vue";
 export default {
   name: "MyMain",
-  components: { MyContent },
+  components: { MyContent, LifeCycle },
   data() {
     return {
       students: ["ahmad", "salah", "fadi"],
       isActive: true,
     };
+  },
+  methods: {
+    changeActive(data) {
+      this.isActive = data;
+    },
   },
 };
 </script>

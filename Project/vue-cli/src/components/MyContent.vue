@@ -4,8 +4,8 @@
       <li v-for="(student, i) in students" :key="i">{{ student }}</li>
     </ul>
     <button @click="deleteSt">change Ref</button>
-    <p>Avive is : {{ myActive }}</p>
-    <button @click="myActive = !myActive">change Prem</button>
+    <p>Avive is : {{ isActive }}</p>
+    <button @click="$emit('updateAcitve', false)">change Prem</button>
   </div>
 </template>
 
@@ -26,10 +26,10 @@ export default {
       this.myStudents.shift();
     },
   },
+  emits: ["updateAcitve"],
   data() {
     return {
       myStudents: this.students,
-      myActive: this.isActive,
     };
   },
 };
