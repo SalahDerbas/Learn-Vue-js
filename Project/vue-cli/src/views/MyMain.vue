@@ -1,38 +1,71 @@
 <template>
   <div class="my-main">
     <h2>This is Main Page</h2>
-    <MyContent
-      :students="students"
-      @updateAcitve="changeActive($event)"
-      :isActive="isActive"
-    />
+    <Keep-alive>
+      <Mycomponent :name="name" v-if="!isComp2">
+        <template #slotHeader>
+          <h3>The is Header 1</h3>
+        </template>
+        <template #slotInputs>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter User Name"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Password"
+          />
+        </template>
+        <template #slotActions>
+          <input type="submit" value="Submit" />
+        </template>
+      </Mycomponent>
+    </Keep-alive>
+
     <hr />
-    <MyContent
-      :students="students"
-      @updateAcitve="changeActive($event)"
-      :isActive="isActive"
-    />
+    <Mycomponent2 :name="name" v-if="isComp2">
+      <template #slotHeader>
+        <h3>The is Header 2</h3>
+      </template>
+      <template #slotInputs>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter User Name"
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter Password"
+        />
+      </template>
+      <template #slotActions>
+        <input type="submit" value="Submit" />
+      </template>
+    </Mycomponent2>
+    <button @click="isComp2 = !isComp2">Toggle</button>
   </div>
-  <LifeCycle />
 </template>
 
 <script>
-import MyContent from "@/components/MyContent.vue";
-import LifeCycle from "@/components/LifeCycle.vue";
+import Mycomponent from "@/components/MyComponent.vue";
+import Mycomponent2 from "@/components/MyComponent.vue";
 export default {
   name: "MyMain",
-  components: { MyContent, LifeCycle },
+  components: { Mycomponent, Mycomponent2 },
   data() {
     return {
-      students: ["ahmad", "salah", "fadi"],
-      isActive: true,
+      name: "ahmad",
+      isComp2: false,
     };
   },
-  methods: {
-    changeActive(data) {
-      this.isActive = data;
-    },
-  },
+  methods: {},
 };
 </script>
 
